@@ -5,11 +5,34 @@
 	<title>Rock paper scissors</title>
 </head>
 <body>
-    <script>
+    <script>    
+    const outcomes = ['rock','paper','scissors'];
+    let playerSelection = "paper";
+        playerSelection = playerSelection.toLowerCase;
+    const computerSelection = computerPlay();
+    function computerPlay() {
+        // outcomes = (The array of the outcomes)
+        //[Math.floor =(Takes the multiplication and returns largest integer less than or equal to the specified number.)  
+        //(Math.random = (Makes a random number between 0 and 1) * length of the array(3 in this case)]
+        return outcomes[Math.floor(Math.random() * outcomes.length)];
+    }
+
+
+    function playRound(playerSelection, computerSelection){
+        if (playerSelection == computerSelection) {
+            console.log("It's a tie!")
+        }
+
+    playRound(playerSelection,computerSelection);
+    console.log(playerSelection);
+    console.log(computerSelection);    
+    }
+    function game(){
+
+    }
 
 
 
-        
     </script>
 </body>
 
