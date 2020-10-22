@@ -5,12 +5,41 @@
 	<title>Rock paper scissors</title>
 </head>
 <body>
-    <script>    
+
+    <script>
+    let rounds = 5;
     const outcomes = ['rock','paper','scissors'];
-    let playerSelection = "paper";
-        playerSelection = playerSelection.toLowerCase;
-    const computerSelection = computerPlay();
-    function computerPlay() {
+    
+    function computerSelect() { // function for computer selecting a choice;
+        let runningStuff = computerPlay();
+        computerSelection = runningStuff;
+        return computerSelection;
+    }
+
+    function game() { // game function to run a loop for the functions
+        let i;
+            for (i = 0;i < rounds; i++){
+                computerSelect();
+                playerSelect();
+                validName();
+            }
+    }
+    function playerSelect() {
+        let initialPrompt = prompt("Please enter your choice![Rock/Paper/Scissors]: ")// Player selection prompt
+        playerSelection = initialPrompt.toLowerCase(); // Making the selection lower case for case sensitivity
+        return playerSelection;
+    }
+    function validName(){
+        if (outcomes.includes(playerSelection)) { // If outcomes array includes the player selection the game starts.
+            playRound(playerSelection,computerSelection);
+        } else {
+            alert("You have put in wrong information,try again!");
+            rounds = rounds + 1; // If the information is wrong adds one more round
+            return rounds;
+        }    
+    }
+
+    function computerPlay() {   
         // outcomes = (The array of the outcomes)
         //[Math.floor =(Takes the multiplication and returns largest integer less than or equal to the specified number.)  
         //(Math.random = (Makes a random number between 0 and 1) * length of the array(3 in this case)]
@@ -19,20 +48,39 @@
 
 
     function playRound(playerSelection, computerSelection){
-        if (playerSelection == computerSelection) {
-            console.log("It's a tie!")
+        // The function is about the game logic
+        // the switch statement checks what the computer and the player picked and depending if its true or false it shows a prompt
+        switch (true || false) {
+            case playerSelection === "rock" && computerSelection === "paper":
+            alert("Computer chose paper and you lose!");
+            break;
+
+            case playerSelection === "paper" && computerSelection === "scissors":
+                alert("Computer chose scissors and you lose!");
+            break;
+
+            case  playerSelection === "scissors" && computerSelection === "rock":
+                alert("Computer chose rock and you lose!");
+            break;
+
+            case playerSelection === "rock" && computerSelection === "scissors":
+                alert("Computer chose scissors and you win!");
+            break;
+
+            case playerSelection === "paper" && computerSelection === "rock":
+                alert("Computer chose rock and you win!");
+            break;
+
+            case playerSelection === "scissors" && computerSelection === "paper":
+                alert("Computer chose paper and you win!");
+            break;
+            
+            case playerSelection === computerSelection:
+                alert("It's a tie!");
+            break;
         }
-
-    playRound(playerSelection,computerSelection);
-    console.log(playerSelection);
-    console.log(computerSelection);    
     }
-    function game(){
-
-    }
-
-
-
+    game();
     </script>
 </body>
 
